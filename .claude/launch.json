@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "uplayer",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+      "runtimeArgs": ["node_modules/tsx/dist/cli.mjs", "server/index.ts"],
+      "port": 5173
+    },
+    {
+      "name": "uplayer-prod",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+      "runtimeArgs": ["node_modules/cross-env/dist/bin/cross-env.js", "NODE_ENV=production", "PORT=5174", "node", "node_modules/tsx/dist/cli.mjs", "server/index.ts"],
+      "port": 5174
+    }
+  ]
+}
