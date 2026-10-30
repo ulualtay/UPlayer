@@ -2,6 +2,12 @@
 
 Significant decisions about UPlayer, newest first, each with its reasons and the alternatives that were considered. Design choices made before this log was started are described, with their reasons, in the README's "How it works" section.
 
+## 2026-10-30: Windows builds on GitHub Releases, not code-signed
+
+- **Decision**: Each published version gets a `v<version>` tag and a GitHub release with the NSIS installer and the portable `.exe` from `npm run dist`, with their SHA-256 checksums in the release notes. The builds are not code-signed.
+- **Why**: People can try UPlayer without installing Node.js or building it, and the binaries stay out of the git history. Before the 0.3.6 upload, its `app.asar` was compared file by file with the build output of the tagged source (identical apart from the `package.json` that electron-builder rewrites).
+- **Alternatives considered**: Source only (everyone would have to build it themselves). Code signing would remove the SmartScreen warning, but it needs a paid certificate and is not set up. Publishing through winget or the Microsoft Store would reach more people, but each needs its own manifest or store submission.
+
 ## 2026-10-30: Public on GitHub under the MIT license
 
 - **Decision**: The source is published as a public GitHub repository, [ulualtay/UPlayer](https://github.com/ulualtay/UPlayer), and licensed under MIT ([LICENSE](../LICENSE)).

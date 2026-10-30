@@ -6,6 +6,10 @@ A Spotify-style desktop music player: search YouTube / YouTube Music, listen ins
 
 Personal project, version 0.3.6. Built for Windows x64: the installer, the bundled yt-dlp download and the taskbar / media-control integration are Windows-specific. There are no automated tests yet; the type-check below is the check to run before committing.
 
+## Download
+
+The Windows x64 installer and a portable `.exe` are on the [latest release](https://github.com/ulualtay/UPlayer/releases/latest), with SHA-256 checksums in its notes. The builds are not code-signed, so SmartScreen may warn on first launch (More info → Run anyway).
+
 ## Run it
 
 | What | Command |
@@ -16,6 +20,14 @@ Personal project, version 0.3.6. Built for Windows x64: the installer, the bundl
 | Type-check | `npm run typecheck` |
 
 Requires Node.js 22+ (`winget install OpenJS.NodeJS.LTS`). Get the code with `git clone https://github.com/ulualtay/UPlayer.git`. After `npm install`, run `node node_modules/electron/install.js` once if npm skipped Electron's download script, and put [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases) at `.tools/yt-dlp.exe` (the app downloads it there itself on first run if it's missing).
+
+## Releasing
+
+Bump `version` in `package.json`, commit, run `npm run dist`, then attach both `.exe` files from `release/` to a GitHub release tagged `v<version>` and put their SHA-256 checksums (`Get-FileHash`) in the notes:
+
+```
+gh release create v<version> release/UPlayer-Setup-<version>.exe release/UPlayer-<version>-portable.exe --title "UPlayer <version>"
+```
 
 ## How it works
 
